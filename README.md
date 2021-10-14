@@ -1,10 +1,39 @@
-This repository contains the source files needed to follow the series [Kubernetes and everything else](https://rinormaloku.com/series/kubernetes-and-everything-else/) or summarized as an article in [Learn Kubernetes in Under 3 Hours: A Detailed Guide to Orchestrating Containers](https://medium.freecodecamp.org/learn-kubernetes-in-under-3-hours-a-detailed-guide-to-orchestrating-containers-114ff420e882)
+step 1: push container to docker hub
 
-To learn more about Kubernetes and other related topics check the following examples with the **Sentiment Analysis** application:
+1.1
+cd sa-frontend
+docker build -f Dockerfile -t yiqiu2012/sentiment-analysis-frontend .
+docker push yiqiu2012/sentiment-analysis-frontend
+1.2
+cd ../sa-logic
+docker build -f Dockerfile -t yiqiu2012/sentiment-analysis-logic .
+docker push yiqiu2012/sentiment-analysis-logic
+1.3
+cd ../sa-webapp
+docker build -f Dockerfile -t yiqiu2012/sentiment-analysis-webapp .
+docker push yiqiu2012/sentiment-analysis-logic
 
-* [Kubernetes Volumes in Practice](https://rinormaloku.com/kubernetes-volumes-in-practice/):
-* [Ingress Controller - simplified routing in Kubernetes](https://www.orange-networks.com/blogs/210-ingress-controller-simplified-routing-in-kubernetes)
-* [Docker Compose in Practice](https://github.com/rinormaloku/k8s-mastery/tree/docker-compose)
-* [Istio around everything else series](https://rinormaloku.com/series/istio-around-everything-else/)
-* [Simple CI/CD for Kubernetes with Azure DevOps](https://www.orange-networks.com/blogs/224-azure-devops-ci-cd-pipeline-to-deploy-to-kubernetes)
-* Envoy series - to be added!
+step 2: create project on GCP, enable billing and container registry API
+
+step 3: pull image from dockerhub and push to cloud container registry
+docker pull yiqiu2012/sentiment-analysis-frontend
+docker tag yiqiu2012/sentiment-analysis-frontend gcr.io/extra-credit-mini/yiqiu2012/sentiment-analysis-frontend:latest
+docker pull yiqiu2012/sentiment-analysis-logic
+docker tag yiqiu2012/sentiment-analysis-frontend gcr.io/extra-credit-mini/yiqiu2012/sentiment-analysis-frontend:latest
+docker pull yiqiu2012/sentiment-analysis-webapp
+docker tag yiqiu2012/sentiment-analysis-frontend gcr.io/extra-credit-mini/yiqiu2012/sentiment-analysis-frontend:latest
+
+step 4: create cluster using GCP console
+
+step 5: create deployment and loadbalancer service for frontend and webapp using yaml files in resource-manifests
+kubectl apply -f sa-frontend-deployment.yaml
+kubectl create -f service-sa-frontend-lb.yaml
+kubectl apply -f sa-web-app-deployment.yaml
+kubectl apply -f service-sa-web-app-lb.yaml
+
+step 6: create deployment and service for logic to communicate with web app
+kubectl apply -f sa-logic-deployment.yaml
+kubectl apply -f service-sa-logic.yaml
+
+step 7: change the ip in sa-frontend/src/App.s to Extermanl IP:PORT and redeploy the docker image
+step 8: on GCP cloud shell, pull the image and re-deploy using yaml

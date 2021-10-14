@@ -13,3 +13,5 @@ target/
 # IDE ignored files
 .idea/
 *.iml
+
+sa-webapp/jdk-17_linux-x64_bin.tar.gz
