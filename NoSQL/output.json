@@ -1,0 +1,67 @@
+{
+    "Items": [
+        {
+            "Temp": {
+                "S": "-2.93"
+            },
+            "RowKey": {
+                "S": "3"
+            },
+            "Conductivity": {
+                "S": "57.1"
+            },
+            "Concentration": {
+                "S": "3.7"
+            },
+            "PartitionKey": {
+                "S": "exp3.csv"
+            },
+            "url": {
+                "S": " https://s3-us-west-2.amazonaws.com/yiqiu-hw3-bucket/exp3.csv"
+            }
+        },
+        {
+            "Temp": {
+                "S": "-2"
+            },
+            "RowKey": {
+                "S": "2"
+            },
+            "Conductivity": {
+                "S": "52.1"
+            },
+            "Concentration": {
+                "S": "3.4"
+            },
+            "PartitionKey": {
+                "S": "exp2.csv"
+            },
+            "url": {
+                "S": " https://s3-us-west-2.amazonaws.com/yiqiu-hw3-bucket/exp2.csv"
+            }
+        },
+        {
+            "Temp": {
+                "S": "-1"
+            },
+            "RowKey": {
+                "S": "1"
+            },
+            "Conductivity": {
+                "S": "52"
+            },
+            "Concentration": {
+                "S": "3.4"
+            },
+            "PartitionKey": {
+                "S": "exp1.csv"
+            },
+            "url": {
+                "S": " https://s3-us-west-2.amazonaws.com/yiqiu-hw3-bucket/exp1.csv"
+            }
+        }
+    ],
+    "Count": 3,
+    "ScannedCount": 3,
+    "ConsumedCapacity": null
+}
