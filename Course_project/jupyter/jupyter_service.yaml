@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: all-spark-service
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 80
+      protocol: TCP
+      targetPort: 8888
+      name: jupyterport
+  selector:
+    app: jupyter-app
+

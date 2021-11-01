@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hadoop-namenode
+  labels:
+    app: hadoop-namenode
+spec:
+  selector:
+    matchLabels:
+      app: hadoop-namenode
+  replicas: 1
+  minReadySeconds: 15
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        app: hadoop-namenode
+    spec:
+      containers:
+        - image: yiqiu2012/hadoop-namenode
+          imagePullPolicy: Always
+          name: hadoop-namenode
+          env:
+            - name: HADOOP-NAMENODE-URL
+              value: "http://hadoop-datanode"
+          ports:
+            - containerPort: 8080
