@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Toolbox</title>
+</head>
+
+<body>
+    <h1>Welcome to Big Data Processing Application</h1>
+    <h2>Please type select from the below list which application you would like to run</h2>
+    <table>
+        <tr>
+            <button type="submit" onclick="location.href='{% url 'open_hadoop' %}'">Apache Hadoop</button>
+        </tr>
+        <tr>
+            <button type="submit" onclick="location.href='{% url 'open_spark' %}'">Apache Spark</button>
+        </tr>
+        <tr>
+            <button type="submit" onclick="location.href='{% url 'open_jupyter' %}'">Jupyter Notebook</button>
+        </tr>
+        <tr>
+            <button type="submit" onclick="location.href='{% url 'open_sonarqube' %}'">Sonarqube</button>
+        </tr>
+    </table>
+
+</body>
+
+</html>

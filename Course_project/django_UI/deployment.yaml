@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: toolbox-app
+  labels:
+    app: toolbox-app
+spec:
+  selector:
+     matchLabels:
+       app: toolbox-app
+  replicas: 2
+  minReadySeconds: 15
+  strategy:
+    type: RollingUpdate
+    rollingUpdate: 
+      maxUnavailable: 1
+      maxSurge: 1 
+  template:
+    metadata:
+      labels:
+        app: toolbox-app
+    spec:
+      containers:
+        - image: yiqiu2012/toolbox_ui
+          imagePullPolicy: Always
+          name: toolbox-app
+          ports:
+            - containerPort: 8000
